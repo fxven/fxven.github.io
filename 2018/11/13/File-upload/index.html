@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Fxven Blog">
 <meta property="og:description" content="File upload">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-13T14:42:12.544Z">
+<meta property="og:updated_time" content="2018-11-13T14:45:13.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="File upload">
 <meta name="twitter:description" content="File upload">
@@ -357,8 +357,8 @@
 </ol>
 <h4 id="apache解析漏洞"><a href="#apache解析漏洞" class="headerlink" title="apache解析漏洞"></a>apache解析漏洞</h4><ol>
 <li>成因: apache解析文件从右到左(直到遇到可以解析的扩展名)</li>
-<li>利用: /x.php.php123</li>
-<li>其他配置问题(conf)<br>AddHandler php5-script .php 只要文件名中包含php,就会被当作php文件执行<br>AddType application/x-httpd-php .jpg 即使文件扩展名为jpg,也会当作php执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AddType描述扩展名与文件类型之间的关系</span><br><span class="line">AddHandler描述扩展名与处理程序之间的关系</span><br></pre></td></tr></table></figure>
+<li>利用: \x.php.php123</li>
+<li>其他配置问题(conf)<br><code>AddHandler php5-script .php</code> 只要文件名中包含php,就会被当作php文件执行<br><code>AddType application/x-httpd-php .jpg</code> 即使文件扩展名为jpg,也会当作php执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AddType描述扩展名与文件类型之间的关系</span><br><span class="line">AddHandler描述扩展名与处理程序之间的关系</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="cms-编辑器漏洞"><a href="#cms-编辑器漏洞" class="headerlink" title="cms,编辑器漏洞"></a>cms,编辑器漏洞</h3><p>常见编辑器: <code>ckeditor(fckeditor)</code> <code>ewebeditor</code></p>
