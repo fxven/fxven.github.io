@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Fxven Blog">
 <meta property="og:description" content="File upload">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-13T13:40:08.644Z">
+<meta property="og:updated_time" content="2018-11-13T14:20:07.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="File upload">
 <meta name="twitter:description" content="File upload">
@@ -331,7 +331,7 @@
         <h2 id="客户端效验"><a href="#客户端效验" class="headerlink" title="客户端效验"></a>客户端效验</h2><ul>
 <li><code>burp抓包修改</code></li>
 </ul>
-<h2 id="服务端效验"><a href="#服务端效验" class="headerlink" title="服务端效验"></a>服务端效验</h2><h3 id="content-type字段效验"><a href="#content-type字段效验" class="headerlink" title="content-type字段效验"></a>content-type字段效验</h3><ul>
+<h2 id="服务端效验"><a href="#服务端效验" class="headerlink" title="服务端效验"></a>服务端效验</h2><h3 id="content-type字段效验-MIME类型"><a href="#content-type字段效验-MIME类型" class="headerlink" title="content-type字段效验 (MIME类型)"></a>content-type字段效验 (MIME类型)</h3><ul>
 <li>content-type <a href="http://tool.oschina.net/commons/" target="_blank" rel="noopener">对照表</a><br><code>burp抓包修改content-type字段</code></li>
 </ul>
 <h3 id="文件头效验"><a href="#文件头效验" class="headerlink" title="文件头效验"></a>文件头效验</h3><ul>
@@ -347,7 +347,27 @@
 <li><strong>漏网</strong><br> <code>jsp jspx jspf</code><br> <code>asp asa cer aspx</code><br> <code>php php3 php4</code><br> <code>exe exee</code>  </li>
 </ol>
 <h3 id="配合文件包含漏洞"><a href="#配合文件包含漏洞" class="headerlink" title="配合文件包含漏洞"></a>配合文件包含漏洞</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;&lt;?phpinfo();?&gt;&quot; &gt;&gt; 1.txt</span><br><span class="line"></span><br><span class="line">&lt;?php include(&quot;x.txt&quot;);?&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="中间件解析漏洞"><a href="#中间件解析漏洞" class="headerlink" title="中间件解析漏洞"></a>中间件解析漏洞</h3>
+<h3 id="中间件解析漏洞"><a href="#中间件解析漏洞" class="headerlink" title="中间件解析漏洞"></a>中间件解析漏洞</h3><h4 id="iis-6-0"><a href="#iis-6-0" class="headerlink" title="iis 6.0"></a>iis 6.0</h4><ol>
+<li>.asp .asa 目录下的文件都会被解析成asp文件</li>
+<li>;截断  </li>
+</ol>
+<h4 id="iis-7-5-amp-nginx"><a href="#iis-7-5-amp-nginx" class="headerlink" title="iis 7.5 &amp; nginx"></a>iis 7.5 &amp; nginx</h4><ol>
+<li>利用条件: <code>cgi.fix_pathinfo=1</code></li>
+<li>利用方法: <code>upload x.jpg</code> <code>x.jpg/1.php</code></li>
+</ol>
+<h3 id="cms-编辑器漏洞"><a href="#cms-编辑器漏洞" class="headerlink" title="cms,编辑器漏洞"></a>cms,编辑器漏洞</h3><p>常见编辑器: <code>ckeditor(fckeditor)</code> <code>ewebeditor</code></p>
+<h3 id="上传截断"><a href="#上传截断" class="headerlink" title="上传截断"></a>上传截断</h3><ol>
+<li>%00截断(0x00)</li>
+<li>超长文件名截断(windows 258byte | linux 4096byte)</li>
+</ol>
+<h3 id="配合操作系统文件命令规则"><a href="#配合操作系统文件命令规则" class="headerlink" title="配合操作系统文件命令规则"></a>配合操作系统文件命令规则</h3><ol>
+<li><p><strong>上传不符合windows文件命名规则的文件名</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x.asp.</span><br><span class="line">x.asp(空格)</span><br><span class="line">x.php:1.jpg</span><br><span class="line">x.php::$DATA</span><br><span class="line">x.php_</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>linux后缀名大小写</strong></p>
+</li>
+</ol>
+<h3 id="利用php特性"><a href="#利用php特性" class="headerlink" title="利用php特性"></a>利用php特性</h3><h3 id="竞争上传"><a href="#竞争上传" class="headerlink" title="竞争上传"></a>竞争上传</h3><h3 id="WAF"><a href="#WAF" class="headerlink" title="WAF"></a>WAF</h3>
       
     </div>
     
@@ -511,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端效验"><span class="nav-number">1.</span> <span class="nav-text">客户端效验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端效验"><span class="nav-number">2.</span> <span class="nav-text">服务端效验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#content-type字段效验"><span class="nav-number">2.1.</span> <span class="nav-text">content-type字段效验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件头效验"><span class="nav-number">2.2.</span> <span class="nav-text">文件头效验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件扩展名"><span class="nav-number">2.3.</span> <span class="nav-text">文件扩展名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#黑名单-blacklist"><span class="nav-number">2.3.1.</span> <span class="nav-text">黑名单(blacklist)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配合文件包含漏洞"><span class="nav-number">2.4.</span> <span class="nav-text">配合文件包含漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中间件解析漏洞"><span class="nav-number">2.5.</span> <span class="nav-text">中间件解析漏洞</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端效验"><span class="nav-number">1.</span> <span class="nav-text">客户端效验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端效验"><span class="nav-number">2.</span> <span class="nav-text">服务端效验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#content-type字段效验-MIME类型"><span class="nav-number">2.1.</span> <span class="nav-text">content-type字段效验 (MIME类型)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件头效验"><span class="nav-number">2.2.</span> <span class="nav-text">文件头效验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件扩展名"><span class="nav-number">2.3.</span> <span class="nav-text">文件扩展名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#黑名单-blacklist"><span class="nav-number">2.3.1.</span> <span class="nav-text">黑名单(blacklist)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配合文件包含漏洞"><span class="nav-number">2.4.</span> <span class="nav-text">配合文件包含漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中间件解析漏洞"><span class="nav-number">2.5.</span> <span class="nav-text">中间件解析漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#iis-6-0"><span class="nav-number">2.5.1.</span> <span class="nav-text">iis 6.0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iis-7-5-amp-nginx"><span class="nav-number">2.5.2.</span> <span class="nav-text">iis 7.5 &amp; nginx</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cms-编辑器漏洞"><span class="nav-number">2.6.</span> <span class="nav-text">cms,编辑器漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传截断"><span class="nav-number">2.7.</span> <span class="nav-text">上传截断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配合操作系统文件命令规则"><span class="nav-number">2.8.</span> <span class="nav-text">配合操作系统文件命令规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用php特性"><span class="nav-number">2.9.</span> <span class="nav-text">利用php特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#竞争上传"><span class="nav-number">2.10.</span> <span class="nav-text">竞争上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WAF"><span class="nav-number">2.11.</span> <span class="nav-text">WAF</span></a></li></ol></li></ol></div>
             
 
           </div>
