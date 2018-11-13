@@ -79,14 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="File upload">
+<meta property="og:type" content="article">
+<meta property="og:title" content="File upload">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/File-upload/index.html">
 <meta property="og:site_name" content="Fxven Blog">
+<meta property="og:description" content="File upload">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-26T14:02:05.516Z">
+<meta property="og:updated_time" content="2018-11-13T13:30:16.796Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="File upload">
+<meta name="twitter:description" content="File upload">
 
 
 
@@ -116,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/File-upload/"/>
 
 
 
 
 
-  <title>tags | Fxven Blog</title>
+  <title>File upload | Fxven Blog</title>
   
 
 
@@ -237,40 +240,159 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/File-upload/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fxven">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fxven Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                1 tag in total
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/sql/" style="font-size: 12px; color: #ccc">sql</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">File upload</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T20:20:19+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>view
+            </span>
+          
+
+          
+
+          
+              <div class="post-description">
+                  File upload
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="客户端效验"><a href="#客户端效验" class="headerlink" title="客户端效验"></a>客户端效验</h2><ul>
+<li><code>burp抓包修改</code></li>
+</ul>
+<h2 id="服务端效验"><a href="#服务端效验" class="headerlink" title="服务端效验"></a>服务端效验</h2><h3 id="content-type字段效验"><a href="#content-type字段效验" class="headerlink" title="content-type字段效验"></a>content-type字段效验</h3><ul>
+<li>content-type <a href="http://tool.oschina.net/commons/" target="_blank" rel="noopener">对照表</a><br><code>burp抓包修改content-type字段</code></li>
+</ul>
+<h3 id="文件头效验"><a href="#文件头效验" class="headerlink" title="文件头效验"></a>文件头效验</h3><ul>
+<li><strong>常用文件头</strong>  </li>
+</ul>
+<ol>
+<li><code>.jpg .jpe .jpg</code> : <code>JPGGraphic File</code>   <code>FFD8FFFE00</code><br>2.<code>gif</code> : <code>GIF 89A</code>   <code>474946383961</code><br>3.<code>png</code> : <code>PNG image File</code>   <code>89504E470D0A</code><br><code>添加对应文件头内容</code></li>
+</ol>
+<h3 id="文件扩展名"><a href="#文件扩展名" class="headerlink" title="文件扩展名"></a>文件扩展名</h3><h4 id="黑名单-blacklist"><a href="#黑名单-blacklist" class="headerlink" title="黑名单(blacklist)"></a>黑名单(blacklist)</h4><p>1.<strong>大小写</strong><br>2.<strong>漏网</strong><br>    <code>jsp jspx jspf</code><br>    <code>asp asa cer aspx</code><br>    <code>php php3 php4</code><br>    <code>exe exee</code>  </p>
+<h3 id="配合文件包含漏洞"><a href="#配合文件包含漏洞" class="headerlink" title="配合文件包含漏洞"></a>配合文件包含漏洞</h3><h3 id="中间件解析漏洞"><a href="#中间件解析漏洞" class="headerlink" title="中间件解析漏洞"></a>中间件解析漏洞</h3>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/05/Sql-Injection/" rel="next" title="Sql Injection">
+                <i class="fa fa-chevron-left"></i> Sql Injection
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -303,8 +425,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -364,6 +495,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端效验"><span class="nav-number">1.</span> <span class="nav-text">客户端效验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端效验"><span class="nav-number">2.</span> <span class="nav-text">服务端效验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#content-type字段效验"><span class="nav-number">2.1.</span> <span class="nav-text">content-type字段效验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件头效验"><span class="nav-number">2.2.</span> <span class="nav-text">文件头效验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件扩展名"><span class="nav-number">2.3.</span> <span class="nav-text">文件扩展名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#黑名单-blacklist"><span class="nav-number">2.3.1.</span> <span class="nav-text">黑名单(blacklist)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配合文件包含漏洞"><span class="nav-number">2.4.</span> <span class="nav-text">配合文件包含漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中间件解析漏洞"><span class="nav-number">2.5.</span> <span class="nav-text">中间件解析漏洞</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
