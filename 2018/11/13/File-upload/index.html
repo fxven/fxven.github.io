@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Fxven Blog">
 <meta property="og:description" content="File upload">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-13T13:38:52.091Z">
+<meta property="og:updated_time" content="2018-11-13T13:40:08.644Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="File upload">
 <meta name="twitter:description" content="File upload">
@@ -346,7 +346,7 @@
 <li><strong>大小写</strong>  </li>
 <li><strong>漏网</strong><br> <code>jsp jspx jspf</code><br> <code>asp asa cer aspx</code><br> <code>php php3 php4</code><br> <code>exe exee</code>  </li>
 </ol>
-<h3 id="配合文件包含漏洞"><a href="#配合文件包含漏洞" class="headerlink" title="配合文件包含漏洞"></a>配合文件包含漏洞</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;&lt;?phpinfo()?;&gt;&quot; &gt; 1.txt</span><br><span class="line"></span><br><span class="line">&lt;?php include(&quot;x.txt&quot;);?&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="配合文件包含漏洞"><a href="#配合文件包含漏洞" class="headerlink" title="配合文件包含漏洞"></a>配合文件包含漏洞</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;&lt;?phpinfo();?&gt;&quot; &gt;&gt; 1.txt</span><br><span class="line"></span><br><span class="line">&lt;?php include(&quot;x.txt&quot;);?&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="中间件解析漏洞"><a href="#中间件解析漏洞" class="headerlink" title="中间件解析漏洞"></a>中间件解析漏洞</h3>
       
     </div>
