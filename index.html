@@ -249,6 +249,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/17/Skills/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fxven">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fxven Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/17/Skills/" itemprop="url">Skills</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T18:39:23+08:00">
+                2019-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pentest/" itemprop="url" rel="index">
+                    <span itemprop="name">pentest</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="TimeStomper"><a href="#TimeStomper" class="headerlink" title="TimeStomper:"></a><a href="https://github.com/justinbui/TimeStomper" target="_blank" rel="noopener"><strong>TimeStomper:</strong></a></h2><p><strong>修改文件及文件夹创建时间，修改时间，访问时间</strong></p>
+<ul>
+<li><code>TimeStomper.exe -c r -m 1-1-1999 14:2:01 -a 5-1-1998 15:60:01 -p .\tes\test</code> <strong><em>(r设置随机时间)</em></strong></li>
+<li><code>TimeStomper.exe -z -p .\tes\test</code> <strong><em>(z设置全部时间)</em></strong></li>
+<li><code>TimeStomper.exe -p .\tes\11.txt -p2 .\tes\test</code> <strong><em>(把-p文件的时间修改为-p2文件的时间)</em></strong></li>
+<li><h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><strong>1. 对文件夹设置使用z与-r选项设置时间时，子文件访问时间并不会被设置，访问时间生成为当前时间</strong><br><strong>2. 设置的时间为UTC时间，北京时间为UTC+8，所以生成的时间会晚八个小时</strong></li>
+<li><strong>检测用到的工具:</strong> <a href="https://github.com/Invoke-IR/PowerForensics" target="_blank" rel="noopener"><code>PowerForensics</code></a> <a href="https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon" target="_blank" rel="noopener"><code>Sysmon</code></a></li>
+<li><strong>Reference: <a href="https://posts.specterops.io/revisiting-ttps-timestomper-622d4c28a655" target="_blank" rel="noopener"><code>TimeStomper-Posts</code></a></strong></li>
+</ul>
+<hr>
+<h3 id="Running-a-NET-Assembly-in-Memory-with-Meterpreter"><a href="#Running-a-NET-Assembly-in-Memory-with-Meterpreter" class="headerlink" title="Running a .NET Assembly in Memory with Meterpreter"></a>Running a .NET Assembly in Memory with Meterpreter</h3><p><strong>1. </strong>Modifying the Project<em>**</em></p>
+<ul>
+<li>下载<a href="https://github.com/GhostPack/Seatbelt" target="_blank" rel="noopener"><code>Seatbelt</code></a>项目，用vs打开Seatbelt.sln</li>
+<li><p>在顶部添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">using System.IO;</span><br><span class="line">using System.Text;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改157行 <code>class Program</code> 为 <code>public class Program</code></li>
+<li>在6818行加入以下代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public static string BuckleUp()</span><br><span class="line">        &#123;</span><br><span class="line">            MemoryStream stream = new MemoryStream();</span><br><span class="line">            StreamWriter sw = new StreamWriter(stream);</span><br><span class="line">            TextWriter old_stdout = Console.Out;</span><br><span class="line">            Console.SetOut(sw);</span><br><span class="line"></span><br><span class="line">            //hard coded command line arguments</span><br><span class="line">            string[] args = &quot;all&quot;.Split(null);</span><br><span class="line">            Main(args);</span><br><span class="line"></span><br><span class="line">            Console.SetOut(old_stdout);</span><br><span class="line">            sw.Flush();</span><br><span class="line">            string output = Encoding.ASCII.GetString(stream.ToArray());</span><br><span class="line">            sw.Close();</span><br><span class="line">            return output;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. Building the C# Project</strong></p>
+<ul>
+<li>将解决方案配置改为Release</li>
+<li>启动生成Seatbelt.exe</li>
+</ul>
+<p><strong>3.Loading with Meterpreter</strong></p>
+<ul>
+<li>上传Seatbelt.exe到服务器，扩展名改为dll</li>
+<li><code>meterpreter&gt; load powershell</code><br><code>meterpreter&gt; powershell_import Seatbelt.dll</code><br><code>meterpreter&gt; powershell_execute [Seatbelt.Program]::BuckleUp()</code></li>
+</ul>
+<h4 id="Reference-Posted-by-Thomas-Hendrickson"><a href="#Reference-Posted-by-Thomas-Hendrickson" class="headerlink" title="Reference: Posted by Thomas Hendrickson"></a>Reference: <a href="https://p16.praetorian.com/blog/running-a-.net-assembly-in-memory-with-meterpreter" target="_blank" rel="noopener">Posted by Thomas Hendrickson</a></h4><hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/File-upload/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -698,7 +872,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -709,7 +883,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -720,7 +894,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -757,7 +931,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
